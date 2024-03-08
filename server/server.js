@@ -5,15 +5,14 @@ const recipeRoute = require("./Routes/recipe.route.js");
 const AuthRoute = require('./Routes/aut.route.js')
 const app = express();
 const port = 3000;
-//require("dotenv").config();
+require("dotenv").config();
 
 //middleware
 app.use(express.json());
 
 mongoose
   .connect(
-    "mongodb+srv://shopping:1KhaMCFzvWZWfMnq@cluster0.ojv5is3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-  )
+    process.env.MONGODB_URL )
   .then(() => console.log("mongodb Connected succesfully!"))
   .catch(() => {
     console.log("Mongodb connection faild!");
